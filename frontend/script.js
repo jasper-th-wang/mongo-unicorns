@@ -1,37 +1,53 @@
-const nameElement = document.getElementById("grid-name");
-const dobElement = document.getElementById("grid-dob");
-const lovesElement = document.getElementById("grid-loves");
-const weightElement = document.getElementById("grid-weight-great-than");
-const genderElement = document.getElementById("grid-gender");
-const vampireElement = document.getElementById("grid-vampire-greater-than");
-const vaccinatedElement = document.getElementById("grid-vaccinated");
-
-console.log(Boolean(nameElement));
+const RowTemplate = document.getElementById("tableRowTemplate");
+const tableBody = document.getElementById("tableBody");
 const inputRefs = {
-  name: nameElement,
-  dob: dobElement,
-  loves: lovesElement,
-  weight: weightElement,
-  gender: genderElement,
-  vampire: vampireElement,
-  vaccinated: vaccinatedElement,
+  name: document.getElementById("grid-name"),
+  dob: document.getElementById("grid-dob"),
+  loves: document.getElementById("grid-loves"),
+  weight: document.getElementById("grid-weight-great-than"),
+  gender: document.getElementById("grid-gender"),
+  vampires: document.getElementById("grid-vampire-greater-than"),
+  vaccinated: document.getElementById("grid-vaccinated"),
 };
 
-function getUnicorns() {
+async function getUnicorns() {
   const queryObject = new URLSearchParams();
+
   for (const inputField in inputRefs) {
     let inputValue = inputRefs[inputField].value;
     if (inputValue) queryObject.append(inputField, inputValue);
   }
 
   const queryString = queryObject.toString();
-  console.log(queryString);
-  fetch(`http://localhost:3000/unicorns?${queryString}`)
-    .then((res) => res.json())
-    .then((res) => console.log(res));
+  const response = await fetch(`http://localhost:3000/unicorns?${queryString}`);
+  return response.json();
 }
 
-document.getElementById("form-btn").addEventListener("click", (e) => {
+function renderEachUnicornRow(unicornDoc) {
+  const newRow = RowTemplate.content.cloneNode(true);
+  newRow.querySelector(".unicorn-name").innerHTML = unicornDoc.name;
+  newRow.querySelector(".unicorn-dob").innerHTML = unicornDoc.dob.split("T")[0];
+  newRow.querySelector(".unicorn-loves").innerHTML = unicornDoc.loves;
+  newRow.querySelector(".unicorn-weight").innerHTML = unicornDoc.weight;
+  newRow.querySelector(".unicorn-gender").innerHTML = unicornDoc.gender;
+  newRow.querySelector(".unicorn-vampires").innerHTML =
+    unicornDoc.vampires || 0;
+  newRow.querySelector(".unicorn-vaccinated").innerHTML = Boolean(
+    unicornDoc.vaccinated,
+  );
+  tableBody.append(newRow);
+}
+
+function renderUnicornTable(queryResults) {
+  tableBody.innerHTML = "";
+  for (const unicorn of queryResults) {
+    renderEachUnicornRow(unicorn);
+  }
+}
+
+document.getElementById("form-btn").addEventListener("click", async (e) => {
   e.preventDefault();
-  getUnicorns();
+  const results = await getUnicorns();
+  console.log(results);
+  renderUnicornTable(results);
 });

@@ -40,7 +40,7 @@
                 <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="grid-dob"
-                >Date of Birth</label
+                >Date of Birth (Born After)</label
                 >
                 <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -86,7 +86,7 @@
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-gender"
                     >
-                        <option value="any">Any</option>
+                        <option value="">Any</option>
                         <option value="m">Male</option>
                         <option value="f">Female</option>
                     </select>
@@ -132,7 +132,7 @@
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="grid-vaccinated"
                     >
-                        <option value="any">Any</option>
+                        <option value="">Any</option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
                     </select>
@@ -155,7 +155,6 @@
         <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                 id="form-btn"
-                onclick="getUnicorns"
         >
             Get Unicorns!
         </button>
@@ -166,24 +165,18 @@
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                     <table class="min-w-full text-left text-sm font-light">
-                        <thead class="border-b font-medium dark:border-neutral-500">
+                        <thead class="border-b font-medium dark:border-neutral-500" id="tableHead">
                         <tr>
-                            <th class="px-6 py-4" scope="col">Name</th>
-                            <th class="px-6 py-4" scope="col">Date of Birth</th>
-                            <th class="px-6 py-4" scope="col">Loves</th>
-                            <th class="px-6 py-4" scope="col">Weight</th>
-                            <th class="px-6 py-4" scope="col">Gender</th>
-                            <th class="px-6 py-4" scope="col">Vampires</th>
-                            <th class="px-6 py-4" scope="col">Vaccinated</th>
+                            <th class="px-6 py-4 unicorn-name" scope="col">Name</th>
+                            <th class="px-6 py-4 unicorn-dob" scope="col">Date of Birth</th>
+                            <th class="px-6 py-4 unicorn-loves" scope="col">Loves</th>
+                            <th class="px-6 py-4 unicorn-weight" scope="col">Weight</th>
+                            <th class="px-6 py-4 unicorn-gender" scope="col">Gender</th>
+                            <th class="px-6 py-4 unicorn-vampires" scope="col">Vampires</th>
+                            <th class="px-6 py-4 unicorn-vaccinated" scope="col">Vaccinated</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr class="border-b dark:border-neutral-500">
-                            <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                            <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                            <td class="whitespace-nowrap px-6 py-4">Otto</td>
-                            <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                        </tr>
+                        <tbody id="tableBody">
                         </tbody>
                     </table>
                 </div>
@@ -191,6 +184,17 @@
         </div>
     </div>
 </div>
+<template id="tableRowTemplate">
+    <tr class="border-b dark:border-neutral-500">
+        <td class="whitespace-nowrap px-6 py-4 font-medium unicorn-name"></td>
+        <td class="whitespace-nowrap px-6 py-4 unicorn-dob"></td>
+        <td class="whitespace-nowrap px-6 py-4 unicorn-loves"></td>
+        <td class="whitespace-nowrap px-6 py-4 unicorn-weight"></td>
+        <td class="whitespace-nowrap px-6 py-4 unicorn-gender"></td>
+        <td class="whitespace-nowrap px-6 py-4 unicorn-vampires"></td>
+        <td class="whitespace-nowrap px-6 py-4 unicorn-vaccinated"></td>
+    </tr>
+</template>
 <script defer src="./script.js"></script>
 <script>
 </script>

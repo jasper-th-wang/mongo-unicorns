@@ -11,7 +11,6 @@ async function main() {
   await mongoose.connect(
     "mongodb+srv://jasper8777:xuhbe1-Nibcyr-hewbus@cluster0.hqlunly.mongodb.net/?retryWrites=true&w=majority",
   );
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
 
 // Validation condition everytime you want to update or insert a unicorn
@@ -28,25 +27,38 @@ const unicornSchema = new mongoose.Schema({
     required: true,
   },
   loves: [String],
+  gender: String,
   dob: Date,
   vaccinated: {
     type: Boolean,
     required: false,
   },
+  vampires: Number,
 });
 const Unicorn = mongoose.model("unicorn", unicornSchema);
 
+function createQueryObject(inputQuery) {
+  const queryObject = {};
+
+  if (inputQuery.name) queryObject["name"] = inputQuery.name;
+  if (inputQuery.dob) queryObject["dob"] = { $gte: inputQuery.dob };
+  if (inputQuery.loves)
+    queryObject["loves"] = { $in: inputQuery.loves.split(",") };
+  if (inputQuery.weight) queryObject["weight"] = { $gte: inputQuery.weight };
+  if (inputQuery.gender) queryObject["gender"] = inputQuery.gender;
+  if (inputQuery.vaccinated)
+    queryObject["vaccinated"] = inputQuery.vaccinated === "true";
+  if (inputQuery.vampires)
+    queryObject["vampires"] = { $gte: inputQuery.vampires };
+
+  return queryObject;
+}
+
 app.get("/unicorns", async (req, res) => {
   try {
-    const queryToPassDonwToDb = {};
-    if (req.query.name) {
-      queryToPassDonwToDb["name"] = req.query.name;
-    }
-    if (req.query.loves) {
-      queryToPassDonwToDb["loves"] = { $in: req.query.loves.split(",") };
-    }
-    console.log(queryToPassDonwToDb);
-    const result = await Unicorn.find(queryToPassDonwToDb);
+    const queryObject = createQueryObject(req.query);
+    console.log(queryObject);
+    const result = await Unicorn.find(queryObject);
     res.json(result);
     console.log(result);
   } catch (err) {
