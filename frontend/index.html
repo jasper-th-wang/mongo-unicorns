@@ -13,7 +13,7 @@
   <input type="text" id="unicornNameInput" />
 </label>
 <label for="">
-  Unicorn loves:
+  Unicorn lovesElement:
   <input
     type="text"
     placeholder="Example: apple,carrot"
@@ -154,7 +154,8 @@
         </div>
         <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                onclick="getUnicorns()"
+                id="form-btn"
+                onclick="getUnicorns"
         >
             Get Unicorns!
         </button>
@@ -190,30 +191,8 @@
         </div>
     </div>
 </div>
-<script src="./script.js"></script>
+<script defer src="./script.js"></script>
 <script>
-    function getUnicorns() {
-        const queryToBeSentToTheServerObject = new URLSearchParams();
-        // TODO: check if name exists too!
-        if (unicornNameInput.value) {
-            queryToBeSentToTheServerObject.append("name", unicornNameInput.value);
-        }
-
-        if (unicornLovesInput.value) {
-            queryToBeSentToTheServerObject.append(
-                "loves",
-                unicornLovesInput.value,
-            );
-        }
-        const queryToBeSentToTheServerString =
-            queryToBeSentToTheServerObject.toString();
-
-        fetch(
-            `http://localhost:3000/unicorns?${queryToBeSentToTheServerString}`,
-        )
-            .then((res) => res.json())
-            .then((res) => console.log(res));
-    }
 </script>
 </body>
 </html>
