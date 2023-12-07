@@ -14,8 +14,25 @@ async function main() {
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
 
+// Validation condition everytime you want to update or insert a unicorn
 const unicornSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  weight: {
+    type: Number,
+    min: 0,
+    max: 1000,
+    required: true,
+  },
+  loves: [String],
+  dob: Date,
+  vaccinated: {
+    type: Boolean,
+    required: false,
+  },
 });
 const Unicorn = mongoose.model("unicorn", unicornSchema);
 
@@ -41,3 +58,7 @@ app.get("/unicorns", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+// 200 -> OK
+// 400 error -> client side
+// 500 error -> server error
