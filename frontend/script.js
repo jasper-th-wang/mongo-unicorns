@@ -1,3 +1,4 @@
+const tableStyleSheet = document.getElementById("tableStyles");
 const RowTemplate = document.getElementById("tableRowTemplate");
 const tableBody = document.getElementById("tableBody");
 const inputRefs = {
@@ -8,6 +9,26 @@ const inputRefs = {
   gender: document.getElementById("grid-gender"),
   vampires: document.getElementById("grid-vampire-greater-than"),
   vaccinated: document.getElementById("grid-vaccinated"),
+};
+
+const checkboxRefs = {
+  name: document.getElementById("name-checkbox"),
+  dob: document.getElementById("dob-checkbox"),
+  loves: document.getElementById("loves-checkbox"),
+  weight: document.getElementById("weight-checkbox"),
+  gender: document.getElementById("gender-checkbox"),
+  vampires: document.getElementById("vampires-checkbox"),
+  vaccinated: document.getElementById("vaccinated-checkbox"),
+};
+
+const columnClassName = {
+  name: ".unicorn-name",
+  dob: ".unicorn-dob",
+  loves: ".unicorn-loves",
+  weight: ".unicorn-weight",
+  gender: ".unicorn-gender",
+  vampires: ".unicorn-vampires",
+  vaccinated: ".unicorn-vaccinated",
 };
 
 async function getUnicorns() {
@@ -45,9 +66,40 @@ function renderUnicornTable(queryResults) {
   }
 }
 
+function updateTableVisibility() {
+  for (const checkboxName in checkboxRefs) {
+    const displayValue = checkboxRefs[checkboxName].checked
+      ? "visible"
+      : "collapse";
+    const columnStyle = `
+      ${columnClassName[checkboxName]} {
+        visibility: ${displayValue};
+      }
+    `;
+    console.log(columnStyle);
+    tableStyleSheet.insertAdjacentHTML("beforeend", columnStyle);
+  }
+}
+
+function handleCheckbox() {
+  tableStyleSheet.innerHTML = "";
+  updateTableVisibility();
+}
+
+updateTableVisibility();
+
 document.getElementById("form-btn").addEventListener("click", async (e) => {
   e.preventDefault();
-  const results = await getUnicorns();
-  console.log(results);
-  renderUnicornTable(results);
+  const formResults = await getUnicorns();
+  console.log(formResults);
+  // handleCheckbox();
+  renderUnicornTable(formResults);
 });
+
+for (const checkboxName in checkboxRefs) {
+  checkboxRefs[checkboxName].addEventListener("click", (e) => {
+    // console.log(e);
+    // console.log(e.target.checked);
+    handleCheckbox();
+  });
+}

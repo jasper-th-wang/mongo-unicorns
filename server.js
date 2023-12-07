@@ -47,7 +47,7 @@ function createQueryObject(inputQuery) {
   if (inputQuery.weight) queryObject["weight"] = { $gte: inputQuery.weight };
   if (inputQuery.gender) queryObject["gender"] = inputQuery.gender;
   if (inputQuery.vaccinated)
-    queryObject["vaccinated"] = inputQuery.vaccinated === "true";
+    queryObject["vaccinated"] = { $exists: inputQuery.vaccinated === "true" };
   if (inputQuery.vampires)
     queryObject["vampires"] = { $gte: inputQuery.vampires };
 
