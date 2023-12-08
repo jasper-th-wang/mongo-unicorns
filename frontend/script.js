@@ -124,16 +124,20 @@ function validateSortStr(sortStr) {
   return wordsInSortStr.every((word) => validWords.includes(word));
 }
 
-updateTableVisibility();
+function main() {
+  updateTableVisibility();
 
-document.getElementById("form-btn").addEventListener("click", async (e) => {
-  e.preventDefault();
-  const formResults = await getUnicorns();
-  renderUnicornTable(formResults);
-});
-
-for (const checkboxName in checkboxRefs) {
-  checkboxRefs[checkboxName].addEventListener("click", () => {
-    handleCheckbox();
+  document.getElementById("form-btn").addEventListener("click", async (e) => {
+    e.preventDefault();
+    const formResults = await getUnicorns();
+    renderUnicornTable(formResults);
   });
+
+  for (const checkboxName in checkboxRefs) {
+    checkboxRefs[checkboxName].addEventListener("click", () => {
+      handleCheckbox();
+    });
+  }
 }
+
+main();
