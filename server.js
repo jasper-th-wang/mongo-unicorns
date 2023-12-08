@@ -54,13 +54,24 @@ function createQueryObject(inputQuery) {
   return queryObject;
 }
 
+function createSortObject(sortQuery) {
+  if (!sortQuery) {
+    return {};
+  }
+  const splitQuery = sortQuery.split(",").map((sortScheme) => {
+    const sortPair = sortScheme.split(".");
+    sortPair[1] = parseInt(sortPair[1]);
+    return sortPair;
+  });
+  return Object.fromEntries(splitQuery);
+}
+
 app.get("/unicorns", async (req, res) => {
   try {
     const queryObject = createQueryObject(req.query);
-    console.log(queryObject);
-    const result = await Unicorn.find(queryObject);
+    const sortObject = createSortObject(req.query.sort);
+    const result = await Unicorn.find(queryObject).sort(sortObject);
     res.json(result);
-    console.log(result);
   } catch (err) {
     console.log(err);
     res.status(540).json({ error: "Something went wrong" + String(err) });

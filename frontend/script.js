@@ -1,6 +1,7 @@
 const tableStyleSheet = document.getElementById("tableStyles");
 const RowTemplate = document.getElementById("tableRowTemplate");
 const tableBody = document.getElementById("tableBody");
+const sortErrorText = document.getElementById("sort-error");
 const inputRefs = {
   name: document.getElementById("grid-name"),
   dob: document.getElementById("grid-dob"),
@@ -9,6 +10,7 @@ const inputRefs = {
   gender: document.getElementById("grid-gender"),
   vampires: document.getElementById("grid-vampire-greater-than"),
   vaccinated: document.getElementById("grid-vaccinated"),
+  sort: document.getElementById("grid-sort"),
 };
 
 const checkboxRefs = {
@@ -31,11 +33,24 @@ const columnClassName = {
   vaccinated: ".unicorn-vaccinated",
 };
 
+const validWords = [
+  "gender",
+  "dob",
+  "weight",
+  "loves",
+  "vampires",
+  "vaccinated",
+  "name",
+];
+
 async function getUnicorns() {
   const queryObject = new URLSearchParams();
 
   for (const inputField in inputRefs) {
     let inputValue = inputRefs[inputField].value;
+    if (inputField === "sort") {
+      inputValue = sanitizeProcessSortInput(inputValue);
+    }
     if (inputValue) queryObject.append(inputField, inputValue);
   }
 
@@ -74,7 +89,6 @@ function updateTableVisibility() {
         display: ${isChecked ? "table-cell" : "none"};
       }
     `;
-    console.log(columnStyle);
     tableStyleSheet.insertAdjacentHTML("beforeend", columnStyle);
   }
 }
@@ -84,19 +98,42 @@ function handleCheckbox() {
   updateTableVisibility();
 }
 
+function sanitizeProcessSortInput(inputStr) {
+  if (!inputStr) return "";
+  const isValid = validateSortStr(inputStr);
+  sortErrorText.style.display = isValid ? "none" : "inline-block";
+  return isValid ? inputStr : "";
+}
+
+function validateSortStr(sortStr) {
+  if (!sortStr) {
+    return false;
+  }
+  // Check if input syntax is correct (should be formatted as "weight.1,vampires.-1"...etc.)
+  const syntaxCheckRegex = new RegExp(/[a-z]*\.-?1,?/g);
+  const wordRegex = new RegExp(/[a-z]+/g);
+
+  const matchedSortStr = Array.from(sortStr.matchAll(syntaxCheckRegex)).join(
+    "",
+  );
+  if (!(matchedSortStr.length === sortStr.length)) {
+    return false;
+  }
+  // check if all words in the sortStr are valid words
+  const wordsInSortStr = Array.from(sortStr.match(wordRegex));
+  return wordsInSortStr.every((word) => validWords.includes(word));
+}
+
 updateTableVisibility();
 
 document.getElementById("form-btn").addEventListener("click", async (e) => {
   e.preventDefault();
   const formResults = await getUnicorns();
-  console.log(formResults);
   renderUnicornTable(formResults);
 });
 
 for (const checkboxName in checkboxRefs) {
-  checkboxRefs[checkboxName].addEventListener("click", (e) => {
-    // console.log(e);
-    // console.log(e.target.checked);
+  checkboxRefs[checkboxName].addEventListener("click", () => {
     handleCheckbox();
   });
 }

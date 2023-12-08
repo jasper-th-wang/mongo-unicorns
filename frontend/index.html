@@ -5,22 +5,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style id="tableStyles"></style>
 </head>
 
 <body class="overflow-auto">
-<style id="tableStyles"></style>
-<!-- <label for="">
-Unicorn Name:
-<input type="text" id="unicornNameInput" />
-</label>
-<label for="">
-Unicorn lovesElement:
-<input
-type="text"
-placeholder="Example: apple,carrot"
-id="unicornLovesInput"
-/>
-</label> -->
 <div class="flex flex-col gap-12 justify-center items-center">
     <form class="w-full max-w-lg round bg-pink-50 p-12 rounded-3xl shadow-lg">
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -72,6 +60,7 @@ id="unicornLovesInput"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="grid-weight-great-than"
                         min="0"
+                        oninput="validity.valid|| (value='');"
                         placeholder="30"
                         type="number"
                 />
@@ -118,6 +107,7 @@ id="unicornLovesInput"
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="grid-vampire-greater-than"
                         min="0"
+                        oninput="validity.valid|| (value='');"
                         placeholder="2"
                         type="number"
                 />
@@ -167,17 +157,18 @@ id="unicornLovesInput"
                         placeholder="Example: weight.-1,vampires.1"
                         type="text"
                 />
+                <span class="text-red-700 text-sm" id="sort-error" style="display: none;">Invalid format (follow format of sortKeyword.sortValue separating by ",") or invalid sort keywords (use "weight", "dob", "vampires", vaccinated", "name", "gender")</span>
             </div>
 
         </div>
         <div>
             <div class="flex flex-wrap gap-x-2 gap-y-3 py-5">
                 <div class="flex items-center me-4">
-                    <input
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            id="name-checkbox"
-                            type="checkbox"
-                            value=""
+                    <input checked
+                           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                           id="name-checkbox"
+                           type="checkbox"
+                           value=""
                     />
                     <label
                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -186,11 +177,11 @@ id="unicornLovesInput"
                     >
                 </div>
                 <div class="flex items-center me-4">
-                    <input
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            id="dob-checkbox"
-                            type="checkbox"
-                            value=""
+                    <input checked
+                           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                           id="dob-checkbox"
+                           type="checkbox"
+                           value=""
                     />
                     <label
                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -199,11 +190,11 @@ id="unicornLovesInput"
                     >
                 </div>
                 <div class="flex items-center me-4">
-                    <input
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            id="loves-checkbox"
-                            type="checkbox"
-                            value=""
+                    <input checked
+                           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                           id="loves-checkbox"
+                           type="checkbox"
+                           value=""
                     />
                     <label
                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -212,11 +203,11 @@ id="unicornLovesInput"
                     >
                 </div>
                 <div class="flex items-center">
-                    <input
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            id="weight-checkbox"
-                            type="checkbox"
-                            value=""
+                    <input checked
+                           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                           id="weight-checkbox"
+                           type="checkbox"
+                           value=""
                     />
                     <label
                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
@@ -225,11 +216,11 @@ id="unicornLovesInput"
                     >
                 </div>
                 <div class="flex items-center">
-                    <input
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            id="gender-checkbox"
-                            type="checkbox"
-                            value=""
+                    <input checked
+                           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                           id="gender-checkbox"
+                           type="checkbox"
+                           value=""
                     />
                     <label
                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
@@ -238,11 +229,11 @@ id="unicornLovesInput"
                     >
                 </div>
                 <div class="flex items-center">
-                    <input
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            id="vampires-checkbox"
-                            type="checkbox"
-                            value=""
+                    <input checked
+                           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                           id="vampires-checkbox"
+                           type="checkbox"
+                           value=""
                     />
                     <label
                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
@@ -251,11 +242,11 @@ id="unicornLovesInput"
                     >
                 </div>
                 <div class="flex items-center">
-                    <input
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            id="vaccinated-checkbox"
-                            type="checkbox"
-                            value=""
+                    <input checked
+                           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                           id="vaccinated-checkbox"
+                           type="checkbox"
+                           value=""
                     />
                     <label
                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
