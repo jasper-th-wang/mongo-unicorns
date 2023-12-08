@@ -68,12 +68,10 @@ function renderUnicornTable(queryResults) {
 
 function updateTableVisibility() {
   for (const checkboxName in checkboxRefs) {
-    const displayValue = checkboxRefs[checkboxName].checked
-      ? "visible"
-      : "collapse";
+    const isChecked = checkboxRefs[checkboxName].checked;
     const columnStyle = `
       ${columnClassName[checkboxName]} {
-        visibility: ${displayValue};
+        display: ${isChecked ? "table-cell" : "none"};
       }
     `;
     console.log(columnStyle);
@@ -92,7 +90,6 @@ document.getElementById("form-btn").addEventListener("click", async (e) => {
   e.preventDefault();
   const formResults = await getUnicorns();
   console.log(formResults);
-  // handleCheckbox();
   renderUnicornTable(formResults);
 });
 

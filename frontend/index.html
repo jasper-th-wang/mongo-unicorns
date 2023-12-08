@@ -1,289 +1,304 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+</head>
 
-  <body class="overflow-auto">
-    <style id="tableStyles"></style>
-    <!-- <label for="">
-  Unicorn Name:
-  <input type="text" id="unicornNameInput" />
+<body class="overflow-auto">
+<style id="tableStyles"></style>
+<!-- <label for="">
+Unicorn Name:
+<input type="text" id="unicornNameInput" />
 </label>
 <label for="">
-  Unicorn lovesElement:
-  <input
-    type="text"
-    placeholder="Example: apple,carrot"
-    id="unicornLovesInput"
-  />
+Unicorn lovesElement:
+<input
+type="text"
+placeholder="Example: apple,carrot"
+id="unicornLovesInput"
+/>
 </label> -->
-    <div class="flex flex-col gap-12 justify-center items-center">
-      <form class="w-full max-w-lg round bg-pink-50 p-12 rounded-3xl shadow-lg">
+<div class="flex flex-col gap-12 justify-center items-center">
+    <form class="w-full max-w-lg round bg-pink-50 p-12 rounded-3xl shadow-lg">
         <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-name"
-              >Name</label
-            >
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-name"
-              placeholder="Horny"
-              type="text"
-            />
-          </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-dob"
-              >Date of Birth (Born After)</label
-            >
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-dob"
-              type="date"
-            />
-          </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-loves"
-              >Loves</label
-            >
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-loves"
-              placeholder="Example: apple,carrot"
-              type="text"
-            />
-          </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-weight-great-than"
-              >Weight Greater Than (Pounds)</label
-            >
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-weight-great-than"
-              min="0"
-              placeholder="30"
-              type="number"
-            />
-          </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-gender"
-            >
-              Gender
-            </label>
-            <div class="relative">
-              <select
-                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-gender"
-              >
-                <option value="">Any</option>
-                <option value="m">Male</option>
-                <option value="f">Female</option>
-              </select>
-              <div
-                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-              >
-                <svg
-                  class="fill-current h-4 w-4"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-name"
+                >Name</label
                 >
-                  <path
-                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                  />
-                </svg>
-              </div>
+                <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-name"
+                        placeholder="Horny"
+                        type="text"
+                />
             </div>
-          </div>
-
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-vampire-greater-than"
-              >Vampires Greater Than</label
-            >
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-vampire-greater-than"
-              min="0"
-              placeholder="2"
-              type="number"
-            />
-          </div>
-
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-vaccinated"
-            >
-              Vaccinated
-            </label>
-            <div class="relative">
-              <select
-                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-vaccinated"
-              >
-                <option value="">Any</option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-              </select>
-              <div
-                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-              >
-                <svg
-                  class="fill-current h-4 w-4"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-dob"
+                >Date of Birth (Born After)</label
                 >
-                  <path
-                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                  />
-                </svg>
-              </div>
+                <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-dob"
+                        type="date"
+                />
             </div>
-          </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-loves"
+                >Loves</label
+                >
+                <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-loves"
+                        placeholder="Example: apple,carrot"
+                        type="text"
+                />
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-weight-great-than"
+                >Weight Greater Than (Pounds)</label
+                >
+                <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-weight-great-than"
+                        min="0"
+                        placeholder="30"
+                        type="number"
+                />
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-gender"
+                >
+                    Gender
+                </label>
+                <div class="relative">
+                    <select
+                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-gender"
+                    >
+                        <option value="">Any</option>
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
+                    </select>
+                    <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                    >
+                        <svg
+                                class="fill-current h-4 w-4"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                            />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-vampire-greater-than"
+                >Vampires Greater Than</label
+                >
+                <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-vampire-greater-than"
+                        min="0"
+                        placeholder="2"
+                        type="number"
+                />
+            </div>
+
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-vaccinated"
+                >
+                    Vaccinated
+                </label>
+                <div class="relative">
+                    <select
+                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-vaccinated"
+                    >
+                        <option value="">Any</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                    <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                    >
+                        <svg
+                                class="fill-current h-4 w-4"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                            />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-sort"
+                >Sort</label
+                >
+                <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-sort"
+                        placeholder="Example: weight.-1,vampires.1"
+                        type="text"
+                />
+            </div>
+
         </div>
         <div>
-          <div class="flex flex-wrap gap-x-2 gap-y-3 py-5">
-            <div class="flex items-center me-4">
-              <input
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="name-checkbox"
-                type="checkbox"
-                value=""
-              />
-              <label
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                for="name-checkbox"
-                >Name</label
-              >
+            <div class="flex flex-wrap gap-x-2 gap-y-3 py-5">
+                <div class="flex items-center me-4">
+                    <input
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            id="name-checkbox"
+                            type="checkbox"
+                            value=""
+                    />
+                    <label
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            for="name-checkbox"
+                    >Name</label
+                    >
+                </div>
+                <div class="flex items-center me-4">
+                    <input
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            id="dob-checkbox"
+                            type="checkbox"
+                            value=""
+                    />
+                    <label
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            for="dob-checkbox"
+                    >Date of Birth</label
+                    >
+                </div>
+                <div class="flex items-center me-4">
+                    <input
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            id="loves-checkbox"
+                            type="checkbox"
+                            value=""
+                    />
+                    <label
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            for="loves-checkbox"
+                    >Loves</label
+                    >
+                </div>
+                <div class="flex items-center">
+                    <input
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            id="weight-checkbox"
+                            type="checkbox"
+                            value=""
+                    />
+                    <label
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                            for="weight-checkbox"
+                    >Weight</label
+                    >
+                </div>
+                <div class="flex items-center">
+                    <input
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            id="gender-checkbox"
+                            type="checkbox"
+                            value=""
+                    />
+                    <label
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                            for="gender-checkbox"
+                    >Gender</label
+                    >
+                </div>
+                <div class="flex items-center">
+                    <input
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            id="vampires-checkbox"
+                            type="checkbox"
+                            value=""
+                    />
+                    <label
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                            for="vampires-checkbox"
+                    >Vampires</label
+                    >
+                </div>
+                <div class="flex items-center">
+                    <input
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            id="vaccinated-checkbox"
+                            type="checkbox"
+                            value=""
+                    />
+                    <label
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                            for="vaccinated-checkbox"
+                    >Vaccinated</label
+                    >
+                </div>
             </div>
-            <div class="flex items-center me-4">
-              <input
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="dob-checkbox"
-                type="checkbox"
-                value=""
-              />
-              <label
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                for="dob-checkbox"
-                >Date of Birth</label
-              >
-            </div>
-            <div class="flex items-center me-4">
-              <input
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="loves-checkbox"
-                type="checkbox"
-                value=""
-              />
-              <label
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                for="loves-checkbox"
-                >Loves</label
-              >
-            </div>
-            <div class="flex items-center">
-              <input
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="weight-checkbox"
-                type="checkbox"
-                value=""
-              />
-              <label
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
-                for="weight-checkbox"
-                >Weight</label
-              >
-            </div>
-            <div class="flex items-center">
-              <input
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="gender-checkbox"
-                type="checkbox"
-                value=""
-              />
-              <label
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
-                for="gender-checkbox"
-                >Gender</label
-              >
-            </div>
-            <div class="flex items-center">
-              <input
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="vampires-checkbox"
-                type="checkbox"
-                value=""
-              />
-              <label
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
-                for="vampires-checkbox"
-                >Vampires</label
-              >
-            </div>
-            <div class="flex items-center">
-              <input
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                id="vaccinated-checkbox"
-                type="checkbox"
-                value=""
-              />
-              <label
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-500"
-                for="vaccinated-checkbox"
-                >Vaccinated</label
-              >
-            </div>
-          </div>
         </div>
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-          id="form-btn"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                id="form-btn"
         >
-          Get Unicorns!
+            Get Unicorns!
         </button>
-      </form>
+    </form>
 
-      <div class="flex flex-col">
+    <div class="flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <table class="min-w-full text-left text-sm font-light">
-            <thead
-              class="border-b font-medium dark:border-neutral-500"
-              id="tableHead"
-            >
-              <tr>
-                <th class="px-6 py-4 unicorn-name" scope="col">Name</th>
-                <th class="px-6 py-4 unicorn-dob" scope="col">Date of Birth</th>
-                <th class="px-6 py-4 unicorn-loves" scope="col">Loves</th>
-                <th class="px-6 py-4 unicorn-weight" scope="col">Weight</th>
-                <th class="px-6 py-4 unicorn-gender" scope="col">Gender</th>
-                <th class="px-6 py-4 unicorn-vampires" scope="col">Vampires</th>
-                <th class="px-6 py-4 unicorn-vaccinated" scope="col">
-                  Vaccinated
-                </th>
-              </tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-          </table>
+            <table class="min-w-full text-left text-sm font-light">
+                <thead
+                        class="border-b font-medium dark:border-neutral-500"
+                        id="tableHead"
+                >
+                <tr>
+                    <th class="px-6 py-4 unicorn-name" scope="col">Name</th>
+                    <th class="px-6 py-4 unicorn-dob" scope="col">Date of Birth</th>
+                    <th class="px-6 py-4 unicorn-loves" scope="col">Loves</th>
+                    <th class="px-6 py-4 unicorn-weight" scope="col">Weight</th>
+                    <th class="px-6 py-4 unicorn-gender" scope="col">Gender</th>
+                    <th class="px-6 py-4 unicorn-vampires" scope="col">Vampires</th>
+                    <th class="px-6 py-4 unicorn-vaccinated" scope="col">
+                        Vaccinated
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
         </div>
-      </div>
     </div>
-    <template id="tableRowTemplate">
-      <tr class="border-b dark:border-neutral-500">
+</div>
+<template id="tableRowTemplate">
+    <tr class="border-b dark:border-neutral-500">
         <td class="whitespace-nowrap px-6 py-4 font-medium unicorn-name"></td>
         <td class="whitespace-nowrap px-6 py-4 unicorn-dob"></td>
         <td class="whitespace-nowrap px-6 py-4 unicorn-loves"></td>
@@ -291,9 +306,9 @@
         <td class="whitespace-nowrap px-6 py-4 unicorn-gender"></td>
         <td class="whitespace-nowrap px-6 py-4 unicorn-vampires"></td>
         <td class="whitespace-nowrap px-6 py-4 unicorn-vaccinated"></td>
-      </tr>
-    </template>
-    <script defer src="./script.js"></script>
-    <script></script>
-  </body>
+    </tr>
+</template>
+<script defer src="./script.js"></script>
+<script></script>
+</body>
 </html>
