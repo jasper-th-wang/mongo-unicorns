@@ -5,7 +5,7 @@
   "main": "playground-1.mongodb.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node scripts/inject-env.js && node server.js"
   },
   "keywords": [],
   "author": "",
