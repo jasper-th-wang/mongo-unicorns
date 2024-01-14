@@ -23,6 +23,7 @@
 
 - [📖 Table of Contents](#-table-of-contents)
 - [📍 Overview](#-overview)
+- [🎈 Demo](#-demo)
 - [📂 repository Structure](#-repository-structure)
 - [⚙️ Modules](#modules)
 - [🚀 Getting Started](#-getting-started)
