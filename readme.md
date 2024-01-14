@@ -1,122 +1,116 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=13114444&assignment_repo_type=AssignmentRepo)
+<div align="center">
+<h1 align="center">
+<br>MONGO UNICORNS</h1>
+<h3>◦ Developed with the software and tools below.</h3>
 
-# Building a Unicorn API with Express, MongoDB, and Frontend Interaction
+<p align="center">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black" alt="JavaScript" />
+<img src="https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=node.js&logoColor=white" alt="NodeJS" />
+<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind" />
+<img src="https://img.shields.io/badge/Express-000000.svg?style=flat-square&logo=Express&logoColor=white" alt="Express" />
+<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=flat-square&logo=HTML5&logoColor=white" alt="HTML5" />
+<img src="https://img.shields.io/badge/JSON-000000.svg?style=flat-square&logo=JSON&logoColor=white" alt="JSON" />
+</p>
+<img src="https://img.shields.io/github/license/jasper-th-wang/mongo-unicorns?style=flat-square&color=5D6D7E" alt="GitHub license" />
+<img src="https://img.shields.io/github/last-commit/jasper-th-wang/mongo-unicorns?style=flat-square&color=5D6D7E" alt="git-last-commit" />
+<img src="https://img.shields.io/github/commit-activity/m/jasper-th-wang/mongo-unicorns?style=flat-square&color=5D6D7E" alt="GitHub commit activity" />
+<img src="https://img.shields.io/github/languages/top/jasper-th-wang/mongo-unicorns?style=flat-square&color=5D6D7E" alt="GitHub top language" />
+</div>
 
-Develop a functional RESTful API using Node.js, Express framework, and MongoDB for managing a database of unicorns.
-Additionally, create a frontend interface that interacts with the API for querying and displaying unicorn data.
+---
 
-## **Requirements**
+## 📖 Table of Contents
 
-1. **Backend Server:**
-    * Implement an Express server to handle HTTP requests and responses for the Unicorn API.
-    * Utilize MongoDB as the database and Mongoose as the ODM for managing unicorn data. Use MongoDB Atlas for hosting
-      the database.
-    * Define API endpoints to enable querying and retrieving unicorn data based on specified parameters.
-2. **Frontend Interface:**
-    * Develop an HTML/CSS/JavaScript frontend interface for interacting with the Unicorn API.
-    * Design input fields for filtering unicorn attributes such
-      as `nameElement`, `lovesElement`, `weightElement`, `genderElement`, `vampires`, `vaccinatedElement`.
-    * Provide a sorting option for specifying the order of retrieved unicorn data.
-    * Display unicorn data in a tabular format based on the queried attributes.
-3. **Client-Server Interaction:**
-    * Implement JavaScript functions to handle user input and make API requests to the backend server.
-    * Ensure the frontend sends appropriate query parameters to the backend based on user input for filtering and
-      sorting unicorns.
-    * Display the retrieved unicorn data in a table dynamically on the frontend interface.
-4. **Validation and Error Handling:**
-    * Implement input validation on the frontend to ensure proper data types and formats before making API requests.
-    * Handle errors gracefully both on the frontend and backend, providing meaningful error messages in case of invalid
-      requests or server errors.
-5. **Integration Testing:**
-    * Validate the functionality of the frontend by testing various scenarios, including different query combinations
-      and edge cases.
-    * Verify that the frontend accurately displays unicorn data based on applied filters and sorting options.
+- [📖 Table of Contents](#-table-of-contents)
+- [📍 Overview](#-overview)
+- [📂 repository Structure](#-repository-structure)
+- [⚙️ Modules](#modules)
+- [🚀 Getting Started](#-getting-started)
+  - [🔧 Installation](#-installation)
+  - [🤖 Running mongo-unicorns](#-running-mongo-unicorns)
 
-## The Unicorn API
+---
 
-**Retrieving Unicorn Data:**
+## 📍 Overview
 
-* **Endpoint:** `/unicorns`
-* **HTTP Method:** `GET`
+The Unicorn Data Service provides a web-based interface for users to query, filter, and sort information about unicorns.
 
-**Query Parameters:**
+Utilizing a combination of a frontend UI built with Tailwind and a backend server, it allows interaction with a MongoDB database storing unicorn data.
 
-* **Filtering Parameters:**
+Features include a dynamic table for displaying results, multiple filter options, and sortable fields. Tailored for ease of use and customization, it's designed to deliver specific data on unicorns based on user preferences, with support for cross-origin requests. It's a user-friendly tool for accessing and visualizing unicorn information.
 
-    * `nameElement`: Filter unicorns by nameElement.
-    * `dobElement`: Filter by date of birth.
-    * `lovesElement`: Filter by things the unicorn lovesElement.
-    * `weightGreaterThan`: Filter unicorns weighing more than a specified value.
-    * `vampiresGreaterThan`: Filter unicorns with more vampireElement encounters.
-    * `vaccinatedElement`: Filter vaccinatedElement or non-vaccinatedElement unicorns.
-    * `vampiresExists`: Filter unicorns based on whether they have encountered vampires.
-    * `weightLessThan`: Filter unicorns weighing less than a specified value.
-    * `genderElement`: Filter by unicorn genderElement (excluding 'other').
-* **Sorting Parameter:**
+---
 
-    * `sort`: Sort the retrieved unicorns by specific attributes and order. (
-      e.g., `sort=nameElement.asc,weightElement.desc`)
+## 📂 Repository Structure
 
-**Example Queries:**
+```sh
+└── mongo-unicorns/
+    ├── frontend/
+    │   ├── index.html
+    │   └── script.js
+    ├── package.json
+    └── server.js
 
-1. **Retrieve all unicorns:**
-    * `GET /unicorns`
-    * **Expected Response:** Returns all unicorn data available in the database.
-2. **Filter unicorns by nameElement:**
-    * `GET /unicorns?nameElement=Roooooodles`
-    * **Expected Response:** Retrieves unicorn(s) with the nameElement "Roooooodles".
-3. **Filter by lovesElement and weightElement:**
-    * `GET /unicorns?lovesElement=rainbows&weightGreaterThan=100`
-    * **Expected Response:** Retrieves unicorns that love rainbows and weigh over 100 units.
-4. **Filter and sort unicorns:**
-    * `GET /unicorns?genderElement=female&sort=nameElement.asc`
-    * **Expected Response:** Retrieves female unicorns sorted by nameElement in ascending order.
-5. **Filter vaccinatedElement unicorns with vampireElement encounters:**
-    * `GET /unicorns?vaccinatedElement=true&vampiresExists=true`
-    * **Expected Response:** Retrieves vaccinatedElement unicorns that have encountered vampires.
+```
 
-**Note:** Ensure that the server returns appropriate HTTP status codes for different scenarios (e.g., 200 for successful
-responses, 400 for bad requests, 404 for not found, etc.).
+---
 
-## Marking Scheme
+## ⚙️ Modules
 
-### Backend (40%)
+<details closed><summary>Root</summary>
 
-1. **Express Server Setup** (5%)
-    - Proper setup and configuration of Express server to handle HTTP requests.
+| File                                                                                    | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [server.js](https://github.com/jasper-th-wang/mongo-unicorns/blob/main/server.js)       | The `server.js` script sets up an Express.js web server with a connected MongoDB database, using Mongoose to define and interact with unicorns data. It serves static files from the frontend directory and offers a RESTful API endpoint `/unicorns` to query and return unicorn data based on provided search parameters and sorting options. The server handles cross-origin requests, listens on a configurable port, and provides unicorns' validation through defined schema constraints.                                                                     |
+| [package.json](https://github.com/jasper-th-wang/mongo-unicorns/blob/main/package.json) | The `package.json` file defines a node.js project named assignment3 with version 1.0.0, which serves as an API for a Unicorn service using Express and MongoDB. It is set up to start with `server.js` and lacks test specifications. The project uses packages `cors` for Cross-Origin Resource Sharing, `dotenv` for environment variable management, `express` as the web framework, and `mongoose` to interact with MongoDB. The required Node engine version is specified as 21.x. The project's main file is incorrectly listed as `playground-1.mongodb.js`. |
 
-2. **MongoDB and Mongoose Integration** (10%)
-    - Use of MongoDB Atlas for hosting the database.
-    - Proper implementation of Mongoose schema and model for unicorn data.
+</details>
 
-3. **API Endpoints** (10%)
-    - Implementation of `/unicorns` endpoint for retrieving unicorn data with query parameters.
-    - Handling of various query parameters for filtering and sorting.
+<details closed><summary>Frontend</summary>
 
-4. **Error Handling and Status Codes** (10%)
-    - Proper handling of errors (both frontend and backend) with appropriate HTTP status codes for different scenarios.
+| File                                                                                         | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [index.html](https://github.com/jasper-th-wang/mongo-unicorns/blob/main/frontend/index.html) | The HTML document is a user interface for querying and displaying data about unicorns, presumably from a MongoDB database given the directory name. It features a TailwindCSS-styled form enabling users to filter unicorns by name, date of birth, likes, weight, gender, vampire encounters, and vaccination status. Users can specify sorting preferences. Form submission triggers a JS function (referenced script.js). Results are displayed in a table where users can choose column visibility via checkboxes. Invalid input formats elicit error messages. |
+| [script.js](https://github.com/jasper-th-wang/mongo-unicorns/blob/main/frontend/script.js)   | The code defines the functionality for an interactive web-based table that displays and filters data on unicorns. It retrieves unicorn data from a server according to user-specified filters, validates and sanitizes the sort input, and dynamically alters the visibility of table columns based on checkboxes. The table is refreshed with relevant data upon user request via a button click, and checkboxes control which columns are visible, allowing customizability of the displayed information.                                                         |
 
-### Frontend (60%)
+</details>
 
-1. **Interface Design and Interaction** (20%)
-    - Design and layout of frontend elements (input fields, buttons, table) following provided guidelines.
-    - Interactive features for filtering and sorting unicorns based on user input.
+---
 
-2. **Client-Server Communication** (20%)
-    - JavaScript functions handling user input and making API requests to the backend server.
-    - Proper construction of query parameters based on user input.
+## 🚀 Getting Started
 
-3. **Data Display** (20%)
-    - Dynamic display of unicorn data in a tabular format based on queried attributes.
-    - Toggle options for attribute visibility using checkboxes.
+**_Dependencies_**
 
-You will penalized for missing deliverables, late submissions, and poor code quality.
+Please ensure you have the following dependencies installed on your system:
 
-## Deliverables
+`- ℹ️ mongoose`
 
-1. Submit a link to your GitHub repository.
-2. Submit a link to YT video demo of your project. The video should be 2-3 minutes long and include a walkthrough of
-   your code and a demo of your project.
+`- ℹ️ Express`
 
+`- ℹ️ Nodemon`
 
+### 🔧 Installation
 
+1. Clone the mongo-unicorns repository:
+
+```sh
+git clone https://github.com/jasper-th-wang/mongo-unicorns
+```
+
+2. Change to the project directory:
+
+```sh
+cd mongo-unicorns
+```
+
+3. Install the dependencies:
+
+```sh
+npm install
+```
+
+### 🤖 Running mongo-unicorns
+
+```sh
+nodemon server.js
+```
