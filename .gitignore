@@ -3,4 +3,5 @@ npm-debug.log
 package-lock.json
 playground*.mongodb.js
 .idea/
-
+.DS_Store
+/*.env
