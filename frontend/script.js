@@ -62,7 +62,7 @@ async function getUnicorns() {
   const queryString = queryObject.toString();
 
   const response = await fetch(
-    `http://localhost:${environment.PORT || 3000}/unicorns?${queryString}`,
+    `https://mongo-unicorns-7e6fc0ffcea8.herokuapp.com/unicorns?${queryString}`,
   );
   return response.json();
 }
