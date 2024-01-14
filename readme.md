@@ -33,7 +33,7 @@
 
 ## 📍 Overview
 
-The Unicorn Data Service provides a web-based interface for users to query, filter, and sort information about unicorns.
+The Unicorn Data Service provides a web-based interface for users to query, filter, and sort information about unicorns. (Unicorns data provided from [The Little MongoDB Book](https://www.openmymind.net/2011/3/28/The-Little-MongoDB-Book/).
 
 Utilizing a combination of a frontend UI built with Tailwind and a backend server, it allows interaction with a MongoDB database storing unicorn data.
 
