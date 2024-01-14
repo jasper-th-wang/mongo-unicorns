@@ -1,17 +1,23 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const path = require("path");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const cors = require("cors");
+
 app.use(cors());
 
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(
-    "mongodb+srv://jasper8777:xuhbe1-Nibcyr-hewbus@cluster0.hqlunly.mongodb.net/?retryWrites=true&w=majority",
-  );
+  await mongoose.connect(process.env.DATABASE_URL);
 }
+
+app.use(express.static(path.join(__dirname, "frontend/")));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "frontend/", "index.html"));
+});
 
 // Validation condition everytime you want to update or insert a unicorn
 const unicornSchema = new mongoose.Schema({
