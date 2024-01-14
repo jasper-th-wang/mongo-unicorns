@@ -61,8 +61,9 @@ async function getUnicorns() {
 
   const queryString = queryObject.toString();
 
+  // HACK: using domain name instead of localhost
   const response = await fetch(
-    `http://localhost:${ENV_PORT || 3000}/unicorns?${queryString}`,
+    `https://mongo-unicorns-7e6fc0ffcea8.herokuapp.com/unicorns?${queryString}`,
   );
   return response.json();
 }
