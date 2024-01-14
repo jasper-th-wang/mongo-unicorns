@@ -41,6 +41,16 @@ Features include a dynamic table for displaying results, multiple filter options
 
 ---
 
+## 🎈 Demo
+
+Here is the link to the live demo of this app deployed on Heroku:
+
+https://mongo-unicorns-7e6fc0ffcea8.herokuapp.com/
+
+---
+
+
+
 ## 📂 Repository Structure
 
 ```sh
